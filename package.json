@@ -1,0 +1,29 @@
+{
+  "name": "m03-project-todolist",
+  "version": "1.0.0",
+  "description": "Projeto 01 toDoList do módulo03",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edfragoso/M03-Project-toDoList.git"
+  },
+  "author": "Ednilson Lucas Fragoso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edfragoso/M03-Project-toDoList/issues"
+  },
+  "homepage": "https://github.com/edfragoso/M03-Project-toDoList#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}

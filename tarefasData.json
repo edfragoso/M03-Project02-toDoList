@@ -1,0 +1,32 @@
+[
+  {
+    "tarefa": "Estruturar código para o primeiro projeto, toDoList.",
+    "descricao ": "AULA01 - Node.js Express",
+    "situacao": true
+  },
+  {
+    "tarefa": "Assistir aulas do gitBook",
+    "descricao": "AULA02 - Introdução parte1 Node.js Express.",
+    "situacao": true
+  },
+  {
+    "tarefa": "Construir o padrão MVC para o projeto",
+    "descricao": "AULA03 - Introdução parte2 Node.js Express.",
+    "situacao": true
+  },
+  {
+    "tarefa": "Construir as Rotas",
+    "descricao": "AULA03 - Introdução parte2 Node.js Express.",
+    "situacao": true
+  },
+  {
+    "tarefa": "Construir o CONTROLER",
+    "descricao": "AULA03 - Introdução parte2 Node.js Express.",
+    "situacao": true
+  },
+  {
+    "tarefa": "Construir a camada SERVICE",
+    "descricao": "AULA03 - Introdução parte2 Node.js Express.",
+    "situacao": true
+  }
+]
