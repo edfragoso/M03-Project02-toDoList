@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const tarefasService = require('../services/tarefa.service');
 
 const findAllTarefasController = async (req, res) => {
-  const tarefas = await tarefasService.findAllTarefaService();
-  if (tarefas.length == 0) {
+  const allTarefas = await tarefasService.findAllTarefaService();
+  if (allTarefas.length == 0) {
     return res
       .status(404)
       .send({ message: 'Não existe nunhuma tarefa cadastrada' });
   }
-  res.send(tarefas);
+  res.send(allTarefas);
 };
 
 const findByIdTarefaController = async (req, res) => {
@@ -19,14 +19,14 @@ const findByIdTarefaController = async (req, res) => {
       .send({ message: "Chave de identificação 'ID' inválida ou não existe" });
   }
 
-  const tarefa = await tarefasService.findByIdTarefaService(id);
+  const chosenTarefa = await tarefasService.findByIdTarefaService(id);
 
-  if (!tarefa) {
+  if (!chosenTarefa) {
     res.status(206).send({ message: 'Tarefa não encontrada' });
   } else {
     res
       .status(200)
-      .send({ message: 'Tarefa Encontrada com sucesso', data: tarefa });
+      .send({ message: 'Tarefa Encontrada com sucesso', data: chosenTarefa });
   }
 };
 
@@ -83,7 +83,7 @@ const deleteTarefaController = async (req, res) => {
     return res.status(206).send({message: "Tarefa não encontrada"})
   } 
   
-  res.status(20).send({message: "Tarefa excluida com sucesso!"})
+  res.status(200).send({message: "Tarefa excluida com sucesso!"})
   
 };
 

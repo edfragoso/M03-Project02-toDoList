@@ -3,8 +3,8 @@ const Tarefas = require('../models/Tarefas');
 
 // Buscando todas tarefas da lista
 const findAllTarefaService = async () => {
-  const tarefas = await Tarefas.find();
-  return tarefas;
+  const allTarefas = await Tarefas.find();
+  return allTarefas;
 };
 
 // Buscando por ID
@@ -23,13 +23,14 @@ const createTarefaService = async (newTarefa) => {
 const updateTarefaService = async (id, tarefaEdited) => {
   const updateTarefa = await Tarefas.findByIdAndUpdate(id, tarefaEdited).setOptions({returnOriginal: false})
   
-  return tarefaEdited;
+  return updateTarefa;
 };
 
 // Deletar tarefa
 const deleteTarefaService = async (id) => {
   return await Tarefas.findByIdAndDelete(id);
 };
+
 
 module.exports = {
   findAllTarefaService,

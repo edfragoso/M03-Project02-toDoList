@@ -1,11 +1,11 @@
 const route = require('express').Router();
 const controllerTarefas = require('../controllers/tarefa.controller');
 
-route.get('/todas-tarefas', controllerTarefas.findAllTarefasController);
+route.get('/all-tarefas', controllerTarefas.findAllTarefasController);
 route.get('/tarefa/:id', controllerTarefas.findByIdTarefaController);
-route.post('/create', controllerTarefas.createTarefaController);
-route.put('/update/:id', controllerTarefas.updateTarefaController);
-route.delete('/delete/:id', controllerTarefas.deleteTarefaController);
+route.post('/create-tarefa', controllerTarefas.createTarefaController);
+route.put('/update-tarefa/:id', controllerTarefas.updateTarefaController);
+route.delete('/delete-tarefa/:id', controllerTarefas.deleteTarefaController);
  
 
 
