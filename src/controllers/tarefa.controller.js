@@ -13,14 +13,7 @@ const findAllTarefasController = async (req, res) => {
 
 const findByIdTarefaController = async (req, res) => {
   const id = req.params.id;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res
-      .status(400)
-      .send({ message: "Chave de identificação 'ID' inválida ou não existe" });
-  }
-
   const chosenTarefa = await tarefasService.findByIdTarefaService(id);
-
   if (!chosenTarefa) {
     res.status(206).send({ message: 'Tarefa não encontrada' });
   } else {
@@ -32,57 +25,23 @@ const findByIdTarefaController = async (req, res) => {
 
 const createTarefaController = async (req, res) => {
   const tarefa = req.body;
-  if (!tarefa || !tarefa.tarefa || !tarefa.descricao) {
-    return res.send({ message: 'Todos os campos devem ser preenchidos' });
-  }
-  if (typeof tarefa.situacao !== 'boolean' || tarefa.situacao === '') {
-    res
-      .status(400)
-      .send({ message: 'Campo situação dever ser do tipo boolean' });
-  } else {
-    const newTarefa = await tarefasService.createTarefaService(tarefa);
+  const newTarefa = await tarefasService.createTarefaService(tarefa);
     res
       .status(201)
       .send({ message: 'Tarefa criada com sucesso', data: newTarefa });
-  }
 };
 
 const updateTarefaController = async (req, res) => {
   const id = req.params.id;
   const tarefaEdited = req.body;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).send({ message: 'ID inválido!' });
-  }
-  const chosenTarefa = await tarefasService.findByIdTarefaService(id);
-  if (!chosenTarefa) {
-    return res.status(206).send({ message: 'Tarefa não encontrada' });
-  }
-  if (!tarefaEdited || !tarefaEdited.tarefa || !tarefaEdited.descricao) {
-    return res.send({ message: 'Todos os campos devem ser preenchidos' });
-  }
-  if (
-    typeof tarefaEdited.situacao !== 'boolean' ||
-    tarefaEdited.situacao === ''
-  ) {
-    res
-      .status(400)
-      .send({ message: 'Campo situação dever ser do tipo boolean' });
-  }
-  const  updatedTarefa = await tarefasService.updateTarefaService(id, tarefaEdited)
+  const updatedTarefa = await tarefasService.updateTarefaService(id, tarefaEdited);
+  
   res.send({ message: 'Tarefa Atualizada com sucesso!', data: updatedTarefa });
 };
 
 const deleteTarefaController = async (req, res) => {
   const id = req.params.id;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).send({ message: 'ID inválido!' });
-  }
-  const chosenTarefa = await tarefasService.deleteTarefaService(id);
-  if (!chosenTarefa) {
-    return res.status(206).send({message: "Tarefa não encontrada"})
-  } 
-  
+  const chosenTarefa = await tarefasService.deleteTarefaService(id);  
   res.status(200).send({message: "Tarefa excluida com sucesso!"})
   
 };
