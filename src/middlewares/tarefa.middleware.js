@@ -13,7 +13,7 @@ const validId = async (req, res, next) => {
 const validObjectBody = (req, res, next) => {
     const tarefa = req.body;
     if (!tarefa || !tarefa.tarefa || !tarefa.descricao) {
-        return res.send({ message: 'Todos os campos devem ser preenchidos' });
+        return res.status(400).send({ message: 'Todos os campos devem ser preenchidos' });
     }
     if (typeof tarefa.situacao !== 'boolean' || tarefa.situacao === '') {
         res
