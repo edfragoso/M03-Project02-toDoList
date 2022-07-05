@@ -1,0 +1,71 @@
+{
+ "openapi": "3.0.0",
+ "info":{
+    "title": "API toDoList",
+    "description": "API para uma lista de tarefas",
+    "version": "1.0.0"
+ },
+ "servers": [
+    {
+        "url": "http://localhost:3000",
+        "description": "URL de teste"
+    }
+ ],
+ "paths": {
+    "/tarefas/": {
+        "get":{
+            "summary": "lista todas as tarefas",
+        "description": "Rota responsável por listar todas as tarefas",
+        "tags":["Tarefas"],
+        "responses": {
+            "206": {
+                "description": "Partial Content"
+            },
+            "200": {
+                "description": "OK",
+                "content":{
+                    "application/json":{
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Tarefas"
+                            }
+                        }
+                    }
+                }
+            }
+         }
+        },
+        "post": {}
+    },
+    "tarefas/{id}":{
+        "get": {},
+        "put": {},
+        "delete":{}
+    },
+    "/tasks/alltasks": {
+        "get": {}
+    },
+    "/tasks/tasks/{id}":{
+        "get": {}
+    }
+ },
+ "components":{
+    "schemas":{
+        "Tarefas": {
+            "type": "object",
+            "properties": {
+                "tarefa": {
+                    "type": "string"
+                },
+                "descricao":{
+                    "type": "string"
+                },
+                "situacao":{
+                    "type": "boolean"
+                }   
+            }
+        }
+    }
+ } 
+}
