@@ -76,7 +76,7 @@
         }
       }
     },
-    "tarefas/{id}": {
+    "/tarefas/{id}": {
       "get": {
         "summary": "Busca uma tarefa por ID",
         "description": "Rota responsável por buscar uma tarefa pelo seu ID",
@@ -109,51 +109,51 @@
           }
         }
       },
-      "put": {
-        "summary": "Editar uma tarefa buscando pelo seu ID",
-        "description": "Rota responsável por editar uma determinada tarefa.",
+     "put": {
+        "summary": "Editar uma tarefa pelo ID",
+        "description": "Rota responsável por editar uma tarefa pelo ID",
         "tags": ["Tarefas"],
         "parameters": [
           {
-            "name":"id",
-            "in":"path",
-            "description": "Id da tarefa para busca.",
+            "name": "id",
+            "in": "path",
+            "description": "ID da tarefa para a busca",
             "required": true
           }
         ],
-        "requestBody":{
+        "requestBody": {
           "content": {
-            "application/json" {
-              "schema":{
+            "application/json": {
+              "schema": {
                 "$ref":"#/components/schemas/Tarefas"
-              }
-            },
-            "examples":{
-              "Tarefas": {
-                "value":{
-                  "tarefa": "Definir tarefa",
-                  "descricao":"Uma descrição da tarefa",
-                  "situacao": true
+              },
+              "examples": {
+                "Paleta": {
+                  "value": {
+                    "tarefa": "Maracujá Editado",
+                    "descricao": "Paleta de Maracujá editado",
+                    "situacao": true
+                  }
                 }
               }
             }
           }
-        }
-      },
-      "responses":{
-        "400":{
-          "description": "ID inválido ou preencha todos os campos da tarefa."
         },
-        "206":{
-          "description": "Tarefa não encontrada com esse ID!"
-        },
-        "200":{
-          "description": "OK!",
-          "content":{
-            "application/json":{
-              "schema":{
-                "type":"object",
-                "$ref":"#/components/schemas/Tarefas"
+        "responses": {
+          "400": {
+            "description": "ID Inválido ou Envie o todos os campos da tarefa!"
+          },
+          "206": {
+            "description": "Tarefa não encontrada com esse id!"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref":  "#/components/schemas/Tarefas"
+                }
               }
             }
           }
