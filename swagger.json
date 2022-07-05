@@ -77,7 +77,38 @@
       }
     },
     "tarefas/{id}": {
-      "get": {},
+      "get": {
+        "summary": "Busca uma tarefa por ID",
+        "description": "Rota responsável por buscar uma tarefa pelo seu ID",
+        "tags": ["Tarefas"],
+        "parameters":[
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da tarefa para a busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400":{
+            "description": "ID inválido!"
+          },
+          "206":{
+            "description": "Tarefa não encontrada com esse ID!"
+          },
+          "200":{
+            "description": "OK!",
+            "content":{
+              "application/json":{
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Tarefas"
+                }
+              }
+            }
+          }
+        }
+      },
       "put": {},
       "delete": {}
     },
