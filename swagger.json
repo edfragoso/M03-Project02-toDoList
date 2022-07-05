@@ -159,13 +159,30 @@
           }
         }
       },
-      "delete": {}
-    },
-    "/tasks/alltasks": {
-      "get": {}
-    },
-    "/tasks/tasks/{id}": {
-      "get": {}
+      "delete": {
+        "summary": "Apagar uma Tarefa pelo ID",
+        "description": "Rota responsável por apagar uma Tarefa pelo ID",
+        "tags": ["Tarefas"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da Tarefa para a deleção",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "ID Inválido!"
+          },
+          "206": {
+            "description": "Tarefa não encontrada com esse id!"
+          },
+          "200": {
+            "description": "Tarefa deletada!"
+          }
+        }
+      }
     }
   },
   "components": {
