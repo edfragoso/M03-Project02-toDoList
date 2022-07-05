@@ -52,7 +52,7 @@ const deleteTarefaController = async (req, res) => {
 
   const chosenTarefa = await tarefasService.deleteTarefaService(id);
   if (!chosenTarefa) {
-    return res.status(206).send({ message: 'Tarefa não encontrada' });
+    return res.status(404).send({ message: 'Tarefa não encontrada' });
   }
 
   res.status(200).send({ message: 'Tarefa excluida com sucesso!' });
