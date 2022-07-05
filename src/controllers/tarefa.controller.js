@@ -16,7 +16,7 @@ const findByIdTarefaController = async (req, res) => {
   const chosenTarefa = await tarefasService.findByIdTarefaService(id);
 
   if (!chosenTarefa) {
-    res.status(206).send({ message: 'Tarefa não encontrada' });
+    res.status(404).send({ message: 'Tarefa não encontrada' });
   } else {
     res
       .status(200)
@@ -38,7 +38,7 @@ const updateTarefaController = async (req, res) => {
 
   const chosenTarefa = await tarefasService.findByIdTarefaService(id);
   if (!chosenTarefa) {
-    return res.status(206).send({ message: 'Tarefa não encontrada' });
+    return res.status(404).send({ message: 'Tarefa não encontrada' });
   }
   const updatedTarefa = await tarefasService.updateTarefaService(
     id,
