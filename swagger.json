@@ -109,7 +109,56 @@
           }
         }
       },
-      "put": {},
+      "put": {
+        "summary": "Editar uma tarefa buscando pelo seu ID",
+        "description": "Rota responsável por editar uma determinada tarefa.",
+        "tags": ["Tarefas"],
+        "parameters": [
+          {
+            "name":"id",
+            "in":"path",
+            "description": "Id da tarefa para busca.",
+            "required": true
+          }
+        ],
+        "requestBody":{
+          "content": {
+            "application/json" {
+              "schema":{
+                "$ref":"#/components/schemas/Tarefas"
+              }
+            },
+            "examples":{
+              "Tarefas": {
+                "value":{
+                  "tarefa": "Definir tarefa",
+                  "descricao":"Uma descrição da tarefa",
+                  "situacao": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses":{
+        "400":{
+          "description": "ID inválido ou preencha todos os campos da tarefa."
+        },
+        "206":{
+          "description": "Tarefa não encontrada com esse ID!"
+        },
+        "200":{
+          "description": "OK!",
+          "content":{
+            "application/json":{
+              "schema":{
+                "type":"object",
+                "$ref":"#/components/schemas/Tarefas"
+              }
+            }
+          }
+        }
+      },
       "delete": {}
     },
     "/tasks/alltasks": {
