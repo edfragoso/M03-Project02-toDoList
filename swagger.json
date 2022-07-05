@@ -1,71 +1,109 @@
 {
- "openapi": "3.0.0",
- "info":{
+  "openapi": "3.0.0",
+  "info": {
     "title": "API toDoList",
     "description": "API para uma lista de tarefas",
     "version": "1.0.0"
- },
- "servers": [
+  },
+  "servers": [
     {
-        "url": "http://localhost:3000",
-        "description": "URL de teste"
+      "url": "http://localhost:3000",
+      "description": "URL de teste"
     }
- ],
- "paths": {
+  ],
+  "paths": {
     "/tarefas/": {
-        "get":{
-            "summary": "lista todas as tarefas",
+      "get": {
+        "summary": "lista todas as tarefas",
         "description": "Rota responsável por listar todas as tarefas",
-        "tags":["Tarefas"],
+        "tags": ["Tarefas"],
         "responses": {
-            "206": {
-                "description": "Partial Content"
-            },
-            "200": {
-                "description": "OK",
-                "content":{
-                    "application/json":{
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/components/schemas/Tarefas"
-                            }
-                        }
-                    }
+          "206": {
+            "description": "Não existe tarefas cadastradas!"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tarefas"
+                  }
                 }
+              }
             }
-         }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastrar uma nova tarefa",
+        "description": "Rota responsável por cadastrar uma tarefa",
+        "tags": ["Tarefas"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tarefas"
+              },
+              "examples": {
+                "Tarefas": {
+                  "value": {
+                    "tarefa": "Definir tarefa",
+                    "descricao": "Uma descrição da tarefa",
+                    "situacao": true
+                  }
+                }
+              }
+            }
+          }
         },
-        "post": {}
+        "responses": {
+          "400": {
+            "description": "Envie todos os campos"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Tarefas"
+                }
+              }
+            }
+          }
+        }
+      }
     },
-    "tarefas/{id}":{
-        "get": {},
-        "put": {},
-        "delete":{}
+    "tarefas/{id}": {
+      "get": {},
+      "put": {},
+      "delete": {}
     },
     "/tasks/alltasks": {
-        "get": {}
+      "get": {}
     },
-    "/tasks/tasks/{id}":{
-        "get": {}
+    "/tasks/tasks/{id}": {
+      "get": {}
     }
- },
- "components":{
-    "schemas":{
-        "Tarefas": {
-            "type": "object",
-            "properties": {
-                "tarefa": {
-                    "type": "string"
-                },
-                "descricao":{
-                    "type": "string"
-                },
-                "situacao":{
-                    "type": "boolean"
-                }   
-            }
+  },
+  "components": {
+    "schemas": {
+      "Tarefas": {
+        "type": "object",
+        "properties": {
+          "tarefa": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "situacao": {
+            "type": "boolean"
+          }
         }
+      }
     }
- } 
+  }
 }
